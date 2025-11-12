@@ -8,7 +8,16 @@ import XLSX from "xlsx";
 const app = express();
 const port = 3000;
 
-app.use(cors());
+app.use(
+	cors({
+		origin: [
+			"https://bipo01.github.io", // domínio do seu GitHub Pages
+			"https://bipo01.github.io/ticketlogfront", // caminho exato (opcional)
+		],
+		methods: ["GET", "POST", "OPTIONS"],
+		allowedHeaders: ["Content-Type"],
+	})
+);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
